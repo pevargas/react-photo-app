@@ -3,26 +3,33 @@ var Home = require('../components/Home')
 var photoHelper = require('../utils/photoHelper')
 
 var HomeContainer = React.createClass({
+  getPhotos: function (page) {
+    photoHelper.getPopularPhotos(page)
+      .then(function (response) {
+        this.setState({
+          isLoading: false,
+          photos: this.state.photos.concat(response.photos),
+          page: response.current_page,
+          total: response.total_pages
+        })
+      }.bind(this))
+  },
   getInitialState: function () {
     return {
       isLoading: true,
-      data: {}
+      photos: [],
+      page: 1,
+      total: 100
     }
   },
   componentDidMount: function () {
-    photoHelper.getPopularPhotos()
-      .then(function (data) {
-        this.setState({
-          isLoading: false,
-          data: data
-        })
-      }.bind(this))
+    this.getPhotos(this.state.page)
   },
   render: function () {
     return (
       <Home
         isLoading={this.state.isLoading}
-        data={this.state.data} />
+        photos={this.state.photos} />
     )
   }
 })

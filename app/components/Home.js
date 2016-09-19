@@ -1,9 +1,7 @@
 var React = require('react')
+var PropTypes = React.PropTypes
 var Loading = require('./Loading')
-
-function puke (object) {
-  return <pre>{JSON.stringify(object, null, ' ')}</pre>
-}
+var Photo = require('./Photo')
 
 function Home (props) {
   if (props.isLoading === true) {
@@ -12,10 +10,16 @@ function Home (props) {
 
   return (
     <div>
-      <p>This is home</p>
-      {puke(props)}
+      {props.photos.map(function (photo) {
+        return <Photo key={photo.id} data={photo} />
+      })}
     </div>
   )
+}
+
+Home.propTypes = {
+  photos: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired
 }
 
 module.exports = Home
