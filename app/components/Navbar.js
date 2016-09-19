@@ -7,7 +7,7 @@ function Navbar (props) {
       <div className='container-fluid'>
         <div className='navbar-header'>
           <Link to='/'>
-            <a className='navbar-brand'>React Photo App</a>
+            <div className='navbar-brand'>React Photo App</div>
           </Link>
         </div>
       </div>
