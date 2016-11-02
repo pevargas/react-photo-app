@@ -14,6 +14,9 @@ var HomeContainer = React.createClass({
         })
       }.bind(this))
   },
+  handleLike: function (event) {
+    console.log('LIKE', event)
+  },
   getInitialState: function () {
     return {
       isLoading: true,
@@ -29,7 +32,8 @@ var HomeContainer = React.createClass({
     return (
       <Home
         isLoading={this.state.isLoading}
-        photos={this.state.photos} />
+        photos={this.state.photos}
+        handleLike={this.handleLike} />
     )
   }
 })

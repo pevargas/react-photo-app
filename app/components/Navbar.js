@@ -1,5 +1,6 @@
 var React = require('react')
 var Link = require('react-router').Link
+var PropTypes = React.PropTypes
 
 function Navbar (props) {
   return (
@@ -10,9 +11,11 @@ function Navbar (props) {
             <div className='navbar-brand'>React Photo App</div>
           </Link>
         </div>
+        <p className='navbar-text'>{props.likeCount} Like{props.likeCount === 1 ? '' : 's'}</p>
       </div>
     </div>
   )
 }
+
 
 module.exports = Navbar

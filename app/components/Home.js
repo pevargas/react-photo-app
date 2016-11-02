@@ -9,17 +9,18 @@ function Home (props) {
   }
 
   return (
-    <div>
+    <article>
       {props.photos.map(function (photo) {
-        return <Photo key={photo.id} data={photo} />
+        return <Photo key={photo.id} data={photo} handleLike={props.handleLike}/>
       })}
-    </div>
+    </article>
   )
 }
 
 Home.propTypes = {
   photos: PropTypes.array.isRequired,
-  isLoading: PropTypes.bool.isRequired
+  isLoading: PropTypes.bool.isRequired,
+  handleLike: PropTypes.func.isRequired
 }
 
 module.exports = Home

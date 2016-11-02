@@ -3,7 +3,7 @@ var PropTypes = React.PropTypes
 
 function Photo (props) {
   return (
-    <figure className='col-sm-4'>
+    <figure className='col-sm-4' onClick={props.handleLike}>
       <img src={props.data.image_url} width="100%"/>
       <figcaption>{props.data.name}</figcaption>
     </figure>
@@ -11,7 +11,8 @@ function Photo (props) {
 }
 
 Photo.propTpyes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  handleLike: PropTypes.func.isRequired
 }
 
 module.exports = Photo
